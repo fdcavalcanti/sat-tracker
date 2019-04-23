@@ -86,7 +86,7 @@ for x in satInfo:
         str(satData.get('passes')[satPass]['maxEl']) + ' ending at ' + str(timeSat[1]))
 
 print('\nClosest pass: ' + satNameCurrent + ' at ' + str(datetime.fromtimestamp(firstPass)))
-plotYN = input('\n0 to exit, 1 to plot: ')
+plotYN = input('\nEnter to exit, 1 to plot: ')
 if plotYN == '1':
     satSelect = input('Choose satellite:\n0- NOAA-15\n1- NOAA-18\n2- NOAA-19\n-> ')
     for pos in satInfo:
