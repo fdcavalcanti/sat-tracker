@@ -93,4 +93,4 @@ if plotYN == '1':
         if satSelect == satInfo[pos][0]:
             PlotSatTrack(satInfo[pos][2])
 else:
-    print('\nGoodbye')
+    print('\nGoodbye!')
