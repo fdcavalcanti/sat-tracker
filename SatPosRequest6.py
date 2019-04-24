@@ -12,9 +12,10 @@ elev = '0'; days = '1'; ang = '25'
 apiKey = 'PWH3XF-ETNDQR-2X6S3P-3ZI5'
 urlbase = 'https://www.n2yo.com/rest/v1/satellite/radiopasses'
 satInfo = {
-    'NOAA-15': ['0','137.62 MHz','25338'],
-    'NOAA-18': ['1','137.9125 MHz','28654'],
-    'NOAA-19': ['2','137,1 MHz','33591']
+    'NOAA-15': ['0','137.62 MHz APT','25338'],
+    'NOAA-18': ['1','137.9125 MHz APT','28654'],
+    'NOAA-19': ['2','137.1 MHz APT','33591'],
+    'METEOR M2': ['3','137.1 MHz QPSK', '40069']
 }
 
 R = 1
@@ -73,7 +74,7 @@ for x in satInfo:
     totalPasses = int(satData.get('info')['passescount']);
     satName = satData.get('info')['satname']
     print('')
-    print('--- ' + satName + ' at ' + satInfo[x][1] + '---')
+    print('--- ' + satName + ' at ' + satInfo[x][1] + ' ---')
 
     for satPass in range(totalPasses):
         timeSat = unixTimeSat(satData,satPass)
