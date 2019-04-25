@@ -1,10 +1,9 @@
 #Sat Pos Request v6
 #Shows closest pass satellite satellite name
-
-import requests
-import arrow
-import matplotlib.pyplot as plt
+import requests #JSON API
+import arrow    #datetime
 import numpy as np
+import matplotlib.pyplot as plt
 from datetime import datetime
 
 lat = '-7.066'; long = '-34.84'
@@ -55,10 +54,33 @@ def PlotSatTrack(NORAD_ID):
     az1 = PositionAz(450-int(startAz)) #450 é o offset de início
     az2 = PositionAz(450-int(endAz))
 
+    left = 0.1; bottom = 0.1
+    mid = 0.5; right = 0.9
+    top = 0.9
+
+    fig = plt.figure()
+    ax = fig.add_axes([0,0,1,1])
+    ax.text(left, mid, 'West',
+            horizontalalignment='left',
+            verticalalignment='bottom',
+            transform=ax.transAxes)
+    ax.text(mid, bottom, 'South',
+            horizontalalignment='center',
+            verticalalignment='center',
+            transform=ax.transAxes)
+    ax.text(right, mid, 'East',
+            horizontalalignment='right',
+            verticalalignment='bottom',
+            transform=ax.transAxes)
+    ax.text(mid, top, 'North',
+            horizontalalignment='center',
+            verticalalignment='center',
+            transform=ax.transAxes)
+
     t = np.linspace(0,2*np.pi,100)
     x = R*np.cos(t)
     y = R*np.sin(t)
-    plt.figure(); plt.plot(x,y)
+    plt.plot(x,y)
     plt.axis('equal'); plt.grid()
     plt.scatter(az1.xPos,az1.yPos)
     plt.scatter(az2.xPos,az2.yPos)
